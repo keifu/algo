@@ -1,3 +1,0 @@
-# algo
-
-first repo
