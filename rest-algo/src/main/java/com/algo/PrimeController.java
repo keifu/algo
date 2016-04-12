@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PrimeController {
 
 	@Autowired
-	PrimeCalcService primeCalcService;
+	private PrimeCalcService primeCalcService;
 
 	@RequestMapping
 	public boolean isPrime(@RequestParam(value = "number") int number) {

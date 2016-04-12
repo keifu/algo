@@ -80,6 +80,12 @@ public class PrimeCaclServiceImpTest {
 	}
 	
 	@Test
+	public void testGetAllPrimesUsingParellelStream() {	
+		List<Integer> primes = primeCaclService.getAllPrimesUsingParallelStream(50);
+		assertEquals(PRIMES_FOR_FIST_50_NUMBERS, primes);
+	}
+	
+	@Test
 	public void testGetAllPrimesUsingExecutorService() {	
 		List<Integer> primes = primeCaclService.getAllPrimesUsingExecutorService(50);
 		assertEquals(PRIMES_FOR_FIST_50_NUMBERS, primes);

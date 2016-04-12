@@ -12,9 +12,9 @@ import java.util.concurrent.RecursiveTask;
 public class PrimeCalcForkJoinTask extends RecursiveTask<List<Integer>> {
 	private static final long serialVersionUID = 1L;
 
-	private int first;
-	private int last;
-	private PrimeCalcService primeCalcService;
+	private final int first;
+	private final int last;
+	private final PrimeCalcService primeCalcService;
 
 	public PrimeCalcForkJoinTask(int first, int last,
 			PrimeCalcService primeCalcService) {

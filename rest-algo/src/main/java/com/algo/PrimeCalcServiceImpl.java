@@ -21,9 +21,9 @@ public class PrimeCalcServiceImpl implements PrimeCalcService {
 
 	private final Logger logger = Logger.getLogger(this.getClass());
 
-	private ThreadPoolExecutor executor;
+	private final ThreadPoolExecutor executor;
 
-	private ForkJoinPool forkJoinPool;
+	private final ForkJoinPool forkJoinPool;
 
 	public PrimeCalcServiceImpl() {
 
@@ -54,13 +54,13 @@ public class PrimeCalcServiceImpl implements PrimeCalcService {
 
 	@Override
 	public List<Integer> getAllPrimes(int number) {
-
+		logger.debug("Calculate all primes to " + number);
 		return getAllPrimesWithinRange(0, number);
 	}
 
 	@Override
 	public List<Integer> getAllPrimesWithinRange(int from, int to) {
-		logger.debug("Get all primes from " + from + " to " + to);
+		
 
 		List<Integer> result = new ArrayList<>();
 		for (int i = from; i < to; i++) {
@@ -74,11 +74,13 @@ public class PrimeCalcServiceImpl implements PrimeCalcService {
 	@Override
 	public List<Integer> getAllPrimesUsingStream(int number) {
 
-		logger.info("Get primes using stream for the first " + number
+		logger.info("Calculate primes using stream for the first " + number
 				+ " numbers");
 
 		List<Integer> primes = IntStream.range(0, number)
-				.filter(x -> isPrime(x)).boxed().collect(Collectors.toList());
+					.filter(x -> isPrime(x))
+					.boxed()
+					.collect(Collectors.toList());
 
 		return primes;
 	}
@@ -89,8 +91,11 @@ public class PrimeCalcServiceImpl implements PrimeCalcService {
 		logger.info("Get primes using parellel stream for the first " + number
 				+ " numbers");
 
-		List<Integer> primes = IntStream.range(0, number).parallel()
-				.filter(x -> isPrime(x)).boxed().collect(Collectors.toList());
+		List<Integer> primes = IntStream.range(0, number)
+				.parallel()
+				.filter(x -> isPrime(x))
+				.boxed()
+				.collect(Collectors.toList());
 
 		return primes;
 	}
@@ -113,14 +118,12 @@ public class PrimeCalcServiceImpl implements PrimeCalcService {
 		int taskSize = number / noOfCores;
 
 		for (int i = 0; i < 3; i++) {
-			Future<List<Integer>> future = executor
-					.submit(new PrimeCalcExecutorTask(i * taskSize, (i + 1)
-							* taskSize, this));
+			Future<List<Integer>> future = 
+					executor.submit(new PrimeCalcExecutorTask(i * taskSize, (i + 1)* taskSize, this));
 			futureList.add(future);
 		}
-		Future<List<Integer>> future = executor
-				.submit(new PrimeCalcExecutorTask(3 * taskSize, number + 1,
-						this));
+		Future<List<Integer>> future = 
+				executor.submit(new PrimeCalcExecutorTask(3 * taskSize, number + 1,this));
 
 		futureList.add(future);
 
@@ -181,10 +184,11 @@ public class PrimeCalcServiceImpl implements PrimeCalcService {
 
 		List<Integer> result = new ArrayList<>();
 
-		futures.stream().map((cf) -> (result.addAll(cf.join())))
-				.collect(Collectors.toList());
-		;
-
+		futures
+			.stream()
+			.map((cf) -> (result.addAll(cf.join())))
+			.collect(Collectors.toList());
+		
 		return result;
 
 	}
