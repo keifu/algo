@@ -1,0 +1,7 @@
+com\icap\PrimeCalcForkJoinTask.class
+com\icap\PrimeCalcService.class
+com\icap\PrimeCalcServiceImpl.class
+com\icap\PrimeController.class
+com\icap\Application.class
+com\icap\PrimeCalcExecutorTask.class
+com\icap\Range.class
