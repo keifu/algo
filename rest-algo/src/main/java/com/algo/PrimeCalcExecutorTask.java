@@ -2,8 +2,6 @@ package com.algo;
 
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 class PrimeCalcExecutorTask implements Callable<List<Integer>> {
 
@@ -19,13 +17,9 @@ class PrimeCalcExecutorTask implements Callable<List<Integer>> {
 
 	@Override
 	public List<Integer> call() throws Exception {
-
-		List<Integer> primes = 
-				IntStream.range(range.getFrom(), range.getTo())
-					.filter(x -> primeCalcService.isPrime(x))
-					.boxed()
-					.collect(Collectors.toList());
-
+		
+		List<Integer> primes = primeCalcService.getAllPrimesWithinRange(range);
+				
 		return primes;
 	}
 
