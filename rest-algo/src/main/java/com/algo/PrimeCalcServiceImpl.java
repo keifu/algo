@@ -174,7 +174,7 @@ public class PrimeCalcServiceImpl implements PrimeCalcService {
 				+ number + " numbers");
 
 		List<Range> ranges = new ArrayList<>();
-		int noOfCores = Runtime.getRuntime().availableProcessors();;
+		int noOfCores = Runtime.getRuntime().availableProcessors();
 		
 		if (number < noOfCores) {
 			// if only a small number, no point using thread pool
