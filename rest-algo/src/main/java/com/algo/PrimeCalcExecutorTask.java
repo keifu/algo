@@ -7,14 +7,13 @@ import java.util.stream.IntStream;
 
 class PrimeCalcExecutorTask implements Callable<List<Integer>> {
 
-	private final int first;
-	private final int last;
+	private final Range range;
+
 	private final PrimeCalcService primeCalcService;
 
-	public PrimeCalcExecutorTask(int first, int last,
+	public PrimeCalcExecutorTask(Range range,
 			PrimeCalcService primeCalcService) {
-		this.first = first;
-		this.last = last;
+		this.range = range;
 		this.primeCalcService = primeCalcService;
 	}
 
@@ -22,7 +21,7 @@ class PrimeCalcExecutorTask implements Callable<List<Integer>> {
 	public List<Integer> call() throws Exception {
 
 		List<Integer> primes = 
-				IntStream.range(this.first, this.last)
+				IntStream.range(range.getFrom(), range.getTo())
 					.filter(x -> primeCalcService.isPrime(x))
 					.boxed()
 					.collect(Collectors.toList());

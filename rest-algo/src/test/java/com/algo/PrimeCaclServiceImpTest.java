@@ -13,22 +13,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.algo.PrimeCalcService;
-import com.algo.PrimeCalcServiceImpl;
-
 @RunWith(JUnitParamsRunner.class)
 public class PrimeCaclServiceImpTest {
 	
-	private PrimeCalcService primeCaclService;
+	private PrimeCalcServiceImpl primeCaclService;
 	
 	@Before
 	public void setup(){
 		primeCaclService = new PrimeCalcServiceImpl();
+		primeCaclService.initialise();
 	}
 	
 	@After
 	public void tearDown(){
-		primeCaclService = null;
+		primeCaclService.destroy();
 	}
 	
 	public static Collection<Object[]> getTestDataFirstFiftyNumbers() {
@@ -66,6 +64,12 @@ public class PrimeCaclServiceImpTest {
 	public void testIsPrime(int number, boolean expected) {	
 		assertEquals(expected, primeCaclService.isPrime(number));
 	}
+	
+	@Test
+	public void testIsPrime_Negative() {	
+		assertEquals(false, primeCaclService.isPrime(-1));
+	}
+	
 	
 	@Test
 	public void testGetAllPrimes() {	

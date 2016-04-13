@@ -12,31 +12,29 @@ import java.util.concurrent.RecursiveTask;
 public class PrimeCalcForkJoinTask extends RecursiveTask<List<Integer>> {
 	private static final long serialVersionUID = 1L;
 
-	private final int first;
-	private final int last;
+	private final Range range;
 	private final PrimeCalcService primeCalcService;
 
-	public PrimeCalcForkJoinTask(int first, int last,
+	public PrimeCalcForkJoinTask(Range range,
 			PrimeCalcService primeCalcService) {
-		this.first = first;
-		this.last = last;
+		this.range = range;
 		this.primeCalcService = primeCalcService;
 	}
 
 	@Override
 	protected List<Integer> compute() {
-		if (last - first <= 100) {
+		if (range.getTo() - range.getFrom() <= 30) {
 			// if less than a certain number, no point using forkjoin pool
-			return primeCalcService.getAllPrimesWithinRange(first, last);
+			return primeCalcService.getAllPrimesWithinRange(range);
 		} else {
-			int mid = (first + last) / 2;
-
-			PrimeCalcForkJoinTask task = new PrimeCalcForkJoinTask(first, mid,
-					primeCalcService);
+			int mid = (range.getFrom() + range.getTo()) / 2;
+			
+			PrimeCalcForkJoinTask task 
+			     = new PrimeCalcForkJoinTask(new Range(range.getFrom(), mid), primeCalcService);
 			task.fork();
 
-			PrimeCalcForkJoinTask task2 = new PrimeCalcForkJoinTask(mid, last,
-					primeCalcService);
+			PrimeCalcForkJoinTask task2 
+				 = new PrimeCalcForkJoinTask(new Range(mid, range.getTo()),primeCalcService);
 			task2.fork();
 
 			List<Integer> result = task.join();

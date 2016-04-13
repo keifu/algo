@@ -20,7 +20,7 @@ public class PrimeController {
 	}
 
 	@RequestMapping("/serial")
-	public List<Integer> getPrimeUsingSeriial(
+	public List<Integer> getPrime(
 			@RequestParam(value = "limit", defaultValue = "50") int limit) {
 		List<Integer> primeList = primeCalcService.getAllPrimes(limit);
 		return primeList;
