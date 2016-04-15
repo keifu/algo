@@ -24,7 +24,6 @@ public class PrimeCalcForkJoinTask extends RecursiveTask<List<Integer>> {
 	@Override
 	protected List<Integer> compute() {
 		if (range.getTo() - range.getFrom() <= 30) {
-			// if less than a certain number, no point using forkjoin pool
 			return primeCalcService.getAllPrimesWithinRange(range);
 		} else {
 			int mid = (range.getFrom() + range.getTo()) / 2;
