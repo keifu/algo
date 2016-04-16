@@ -55,7 +55,8 @@ public class PrimeCalcServiceImpl implements PrimeCalcService {
 			return false;
 
 		// if not, check odd numbers up to square root
-		for (int i = 3; i * i <= number; i += 2) {
+		double sqrtOfNumber = Math.sqrt(number);
+		for (int i = 3; i <= sqrtOfNumber; i += 2) {
 			if (number % i == 0)
 				return false;
 		}
