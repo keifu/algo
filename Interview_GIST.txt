@@ -1,0 +1,48 @@
+Best tools for learning:
+
+-- To gain more in depth knowledge
+  	-- Books, e.g Effective Java, Java concurrency in practice
+
+-- quick reference
+	-- Online oracle java tutorial
+	-- stack overflow
+	-- Reading technical blogs, e.g MkYong  - quick examples
+
+Restful services:
+
+-- To give a simple example,  created a restful endpoint to view of a list of trades
+	-- this was implemented using spring @RestController
+	-- HTTP Get request to list all the trades
+	-- HTTP Post - when a user wants to enter a new trade
+	-- HTTP Put - when user wants to modify the trade
+	-- HTTP delete - no need as we dont delete trades
+	-- Compare to the recommeneded design of Rest,I think this pretty much conforms to it
+
+
+- Spring framework provides the infrastructure support for developing Java application.
+-- it handles the infrastrucure part so you can focus on the your application logic.
+-- Core part is a IOC container and uses dependency injection to glue the components together
+
+-- Two main ways:
+	- Define you beans in an XML file. Declare your bean and set properties
+	- Annotation based approach, e.g @Component and @Autowire
+	- Java based @configuration
+
+
+Exception 
+	- problem that arises during the execution of a program
+	- e.g user has entered invalid data, database connection problem
+
+	- Two types of exceptions: checked and unchecked
+	- Checked exception occurs at compile time.
+		- Errors where you might be able to recover from.
+		-   User is forced to handle the exception. It must be caught or proprogated
+		- e.g FileNotFoundException
+		- The user can retry
+
+	- Uncheck exception are runtime exceptions.
+
+Agile:  I've used agile methodies for the last few years in my last work place
+		- We used the TDD with Junit/Mockto
+		- Continuous integration using team city.  
+		- Part of scrum methodologies, daily stand ups and monthly releases/sprints
