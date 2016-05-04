@@ -10,7 +10,7 @@ run the class com.algo.Application
 
 
 
-URLs for different methods of calculating:
+URLs for different methods of calculating prime numbers:
 
 http://localhost:8080/prime/serial?limit=1000
 
