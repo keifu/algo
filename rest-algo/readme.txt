@@ -6,6 +6,8 @@ or
 
 run the class com.algo.Application
 
+Merge
+
 
 URLs for different methods of calculating:
 
