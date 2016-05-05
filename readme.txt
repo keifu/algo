@@ -7,8 +7,6 @@ or
 run the class com.algo.Application
 (make sure port 8080 is free)
 
-Testing again
-
 
 URLs for different methods of calculating prime numbers:
 
