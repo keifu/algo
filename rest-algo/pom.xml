@@ -23,7 +23,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 
-
 		<dependency>
 			<groupId>pl.pragmatists</groupId>
 			<artifactId>JUnitParams</artifactId>
