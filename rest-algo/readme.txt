@@ -7,6 +7,7 @@ or
 run the class com.algo.Application
 
 
+
 URLs for different methods of calculating:
 
 http://localhost:8080/prime/serial?limit=1000
@@ -21,8 +22,5 @@ http://localhost:8080/prime/forkjoin?limit=1000
 
 http://localhost:8080/prime/completableFuture?limit=1000
 
-
-testing
-testing
 
 
