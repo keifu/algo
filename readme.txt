@@ -5,7 +5,7 @@ mvn spring-boot:run
 or
 
 run the class com.algo.Application
-(please make sure port 8080 is free)
+(make sure port 8080 is free)
 
 
 URLs for different methods of calculating prime numbers:
